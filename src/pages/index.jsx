@@ -1,4 +1,5 @@
 import { createClient } from "contentful";
+import Link from "next/link";
 
 /**
  * @name getStaticProps
@@ -27,7 +28,9 @@ export default function Home({ articles }) {
         <h1 className="text-4xl font-bold">Home page</h1>
         {articles.map((article) => (
           <div key={article.sys.id}>
-            <h2>{article.fields.title}</h2>
+            <Link href={`/articles/${article.fields.slug}`}>
+              <a>{article.fields.title}</a>
+            </Link>
           </div>
         ))}
       </section>
