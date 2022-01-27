@@ -50,7 +50,7 @@ export default function ArticleDetails({ article }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <header className="mx-auto xl:p-3 max-w-screen-xl">
+      <header className="mx-auto max-w-screen-xl">
         <Image
           src={`https:${featuredImage.fields.file.url}`}
           width={featuredImage.fields.file.details.image.width}
@@ -67,7 +67,7 @@ export default function ArticleDetails({ article }) {
           <div>
             {tags.map((tag) => (
               <span
-                className="px-1 mr-2 text-xs rounded bg-slate-300"
+                className="px-1 mr-2 text-xs font-semibold rounded bg-slate-300"
                 key={tag}
               >
                 {tag}
