@@ -1,5 +1,5 @@
 import { createClient } from "contentful";
-import Link from "next/link";
+import { ArticleCard } from "../components";
 
 /**
  * @name getStaticProps
@@ -24,14 +24,10 @@ export default function Home({ articles }) {
   console.log(articles);
   return (
     <main className="min-h-[calc(100vh_-_7rem)] bg-slate-100">
-      <section className="mx-auto p-3 max-w-screen-xl">
-        <h1 className="text-4xl font-bold">Home page</h1>
+      <section className="flex flex-col mx-auto p-3 gap-3 max-w-screen-xl sm:grid sm:grid-cols-2 lg:grid-cols-3">
+        <h1 className="sr-only">Articles</h1>
         {articles.map((article) => (
-          <div key={article.sys.id}>
-            <Link href={`/articles/${article.fields.slug}`}>
-              <a>{article.fields.title}</a>
-            </Link>
-          </div>
+          <ArticleCard key={article.sys.id} article={article} />
         ))}
       </section>
     </main>
