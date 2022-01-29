@@ -14,9 +14,8 @@ export async function getStaticProps() {
   const response = await client.getEntries({ content_type: "article" });
 
   return {
-    props: {
-      articles: response.items,
-    },
+    props: { articles: response.items },
+    revalidate: 1,
   };
 }
 
