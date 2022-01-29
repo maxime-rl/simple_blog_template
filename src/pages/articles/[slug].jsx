@@ -52,6 +52,8 @@ export async function getStaticProps({ params }) {
  * @returns {JSX}
  */
 export default function ArticleDetails({ article }) {
+  if (!article) return <div>loading...</div>;
+
   const { featuredImage, title, author, readingTime, tags, body } =
     article.fields;
 
