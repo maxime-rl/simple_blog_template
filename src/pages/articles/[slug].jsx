@@ -2,6 +2,7 @@ import Head from "next/head";
 import { createClient } from "contentful";
 import Image from "next/image";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { Skeleton } from "../../components";
 
 const client = createClient({
   space: process.env.CONTENTFUL_SPACE_ID,
@@ -52,7 +53,7 @@ export async function getStaticProps({ params }) {
  * @returns {JSX}
  */
 export default function ArticleDetails({ article }) {
-  if (!article) return <div>loading...</div>;
+  if (!article) return <Skeleton />;
 
   const { featuredImage, title, author, readingTime, tags, body } =
     article.fields;
@@ -62,13 +63,15 @@ export default function ArticleDetails({ article }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <header className="mx-auto max-w-screen-xl">
-        <Image
-          src={`https:${featuredImage.fields.file.url}`}
-          width={featuredImage.fields.file.details.image.width}
-          height={featuredImage.fields.file.details.image.height}
-          alt={title}
-        />
+      <header className="mx-auto max-w-screen-xl xl:px-3">
+        <div className="relative w-full h-56 md:h-64 lg:h-80">
+          <Image
+            src={`https:${featuredImage.fields.file.url}`}
+            layout="fill"
+            objectFit="cover"
+            alt={title}
+          />
+        </div>
         <div className="mx-auto p-3 prose">
           <h1 className="mb-3">{title}</h1>
           <div className="text-xs font-light">
