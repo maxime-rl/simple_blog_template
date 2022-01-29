@@ -28,7 +28,7 @@ export default function ArticleCard({ article }) {
             </div>
             <h1 className="py-1 text-2xl font-bold">{title}</h1>
           </header>
-          <div className="[display:_-webkit-box] [-webkit-line-clamp:_3] [-webkit-box-orient:_vertical] overflow-hidden text-sm">
+          <div className="[display:_-webkit-box] [-webkit-line-clamp:_3] [-webkit-box-orient:_vertical] overflow-hidden h-[3.75rem] text-sm">
             {excerpt}
           </div>
           <footer className="flex items-center pt-4">
