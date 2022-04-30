@@ -63,8 +63,8 @@ export default function ArticleDetails({ article }) {
       <Head>
         <title>{title}</title>
       </Head>
-      <header className="mx-auto max-w-screen-xl xl:px-3">
-        <div className="relative w-full h-56 md:h-64 lg:h-80">
+      <header className="w-full pt-14 bg-slate-100">
+        <div className="relative w-full h-80 lg:h-96">
           <Image
             src={`https:${featuredImage.fields.file.url}`}
             layout="fill"
@@ -72,27 +72,31 @@ export default function ArticleDetails({ article }) {
             alt={title}
           />
         </div>
-        <div className="mx-auto p-3 prose">
-          <h1 className="mb-3">{title}</h1>
-          <div className="text-xs font-light">
-            <span>By {author} - </span>
-            <span>{article.sys.createdAt.slice(0, 10)} - </span>
-            <span>{readingTime} mins read</span>
-          </div>
-          <div>
-            {tags.map((tag) => (
-              <span
-                className="px-1 mr-2 text-xs font-semibold rounded bg-slate-300"
-                key={tag}
-              >
-                {tag}
-              </span>
-            ))}
+        <div className="mx-auto max-w-screen-xl xl:px-3">
+          <div className="mx-auto p-3 lg:pt-14 prose">
+            <h1 className="mb-3">{title}</h1>
+            <div className="text-xs font-light">
+              <span>By {author} - </span>
+              <span>{article.sys.createdAt.slice(0, 10)} - </span>
+              <span>{readingTime} mins read</span>
+            </div>
+            <div>
+              {tags.map((tag) => (
+                <span
+                  className="px-1 mr-2 text-xs font-semibold rounded bg-slate-300"
+                  key={tag}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       </header>
-      <main className="mx-auto p-3 prose">
-        {documentToReactComponents(body)}
+      <main className="bg-slate-100">
+        <div className="mx-auto p-3 lg:pb-14 bg-slate-100 prose">
+          {documentToReactComponents(body)}
+        </div>
       </main>
     </>
   );
